@@ -3,6 +3,7 @@ package com.himanshu.controller;
 import com.himanshu.entity.Student;
 import com.himanshu.service.StudentService;
 import com.himanshu.service.StudentServiceImpl;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public class StduentController {
     StudentService studentService;
 
     @PostMapping("/save")
-    public ResponseEntity<Student> saveStduent(@RequestBody Student student){
+    public ResponseEntity<Student> saveStduent(@Valid @RequestBody Student student){
         Student student1 = this.studentService.saveStudent(student);
         return new ResponseEntity<>(student1, HttpStatus.CREATED);
     }
