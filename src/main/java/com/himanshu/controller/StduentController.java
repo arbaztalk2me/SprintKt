@@ -5,6 +5,7 @@ import com.himanshu.service.StudentService;
 import com.himanshu.service.StudentServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,11 @@ public class StduentController {
 
     @Autowired
     StudentService studentService;
+
+    @Value("${arbaz}")
+    private String var1;
+
+
 
     @PostMapping("/save")
     public ResponseEntity<Student> saveStduent(@Valid @RequestBody Student student){
@@ -61,6 +67,10 @@ public class StduentController {
         return "Stduent delete with id "+id;
     }
 
+    @GetMapping("/getValueFromPropetyFile")
+    public String getvalueProperty(){
+       return var1;
+    }
 
 
 }
