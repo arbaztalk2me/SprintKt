@@ -29,3 +29,28 @@ Eg= @Value("${arbaz}")
 @Controller--->mvc pattern
 @Responsebody---->convert json to java and vice versa
 )
+
+
+
+
+
+
+///Swagger Annotation 
+
+	base-class=  @OpenAPIDefinition(info = @Info(title = "Student Rest Api",description 			= "Student Crud Application",version = "V 2.0",
+			contact = @Contact(url = "http://gigantic-server.com", name = "Himanshu 			bro", email = "email2himasnhu.com")))
+
+
+	
+Controller Class===>
+		@Tag(name = "Student-Controller-Class", description = "Student related APIs") on top class
+
+		@Operation(summary = "get course By Id",description = "get course by id from db") on method also same annotation
+
+
+
+
+MODEL CLASS=====>
+		@Schema(description = "Student Model Information") on top of class
+		@Schema(description = "Student Name Column",example = "himanshu") on method
+
