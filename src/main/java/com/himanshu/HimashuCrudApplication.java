@@ -2,6 +2,10 @@ package com.himanshu;
 
 import com.himanshu.entity.Student;
 import com.himanshu.repo.StudentRepo;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Contact;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.info.License;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -12,6 +16,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @SpringBootApplication
+@OpenAPIDefinition(info = @Info(title = "Student Rest Api",description = "Student Crud Application",version = "V 2.0",
+		contact = @Contact(url = "http://gigantic-server.com", name = "Himanshu bro", email = "email2himasnhu.com")))
 public class HimashuCrudApplication {
 
 	@Autowired

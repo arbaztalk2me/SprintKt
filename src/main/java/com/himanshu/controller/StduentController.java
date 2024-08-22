@@ -3,6 +3,12 @@ package com.himanshu.controller;
 import com.himanshu.entity.Student;
 import com.himanshu.service.StudentService;
 import com.himanshu.service.StudentServiceImpl;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,6 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/student")
+@Tag(name = "Student-Controller-Class", description = "Student related APIs")
 public class StduentController {
 
     @Autowired
@@ -25,13 +32,22 @@ public class StduentController {
 
 
     @PostMapping("/save")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201",description = "course added successfully",
+                    content = {
+                            @Content(mediaType = "application/json")
+                    }),
+            @ApiResponse(responseCode = "400",description = "validation error")
+    })
+    @Operation(summary = "Add Student to DB")
     public ResponseEntity<Student> saveStduent(@Valid @RequestBody Student student){
         Student student1 = this.studentService.saveStudent(student);
         return new ResponseEntity<>(student1, HttpStatus.CREATED);
     }
 
     @GetMapping("/get/{id}")
-    public Student getStudentById(@PathVariable  int id){
+    @Operation(summary = "get course By Id",description = "get course by id from db")
+    public Student getStudentById(@PathVariable @Parameter(example = "1") int id){
         Student student1 = this.studentService.getStudentByid(id);
         return student1;
     }

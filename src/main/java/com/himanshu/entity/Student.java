@@ -1,6 +1,7 @@
 package com.himanshu.entity;
 
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
@@ -11,6 +12,7 @@ import org.hibernate.validator.constraints.Length;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Schema(description = "Student Model Information")
 public class Student {
 
     @Id
@@ -18,6 +20,7 @@ public class Student {
     private int id;
 
     @NotNull(message = "Name must not be null")
+    @Schema(description = "Student Name Column",example = "himanshu")
     private String name;
 
     @Email(message="eneter a valid email",regexp = "^[a-zA-Z0-9._%+-]+@(gmail\\.com|yahoo\\.com)$")
