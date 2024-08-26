@@ -50,6 +50,15 @@ Controller Class===>
 
 
 
+//LOGGER ---- LEVEL
+
+fatal<error<Warn<Info<DEbug<Trace<All
+
+
+By default
+info
+
+
 MODEL CLASS=====>
 		@Schema(description = "Student Model Information") on top of class
 		@Schema(description = "Student Name Column",example = "himanshu") on method
