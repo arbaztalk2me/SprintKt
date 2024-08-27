@@ -4,6 +4,8 @@ import com.himanshu.GlobalExeptionHandling.StudentNotFoundException;
 import com.himanshu.GlobalExeptionHandling.StudentNotFoundWithMobException;
 import com.himanshu.entity.Student;
 import com.himanshu.repo.StudentRepo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,8 @@ import java.util.Optional;
 
 @Service
 public class StudentServiceImpl implements StudentService{
+
+    Logger logger= LoggerFactory.getLogger(StudentServiceImpl.class);
 
     @Autowired
     StudentRepo studentRepo;
@@ -43,6 +47,10 @@ public class StudentServiceImpl implements StudentService{
     @Override
     public Student findStudentByMob(String mob) {
         Optional<Student> byId = this.studentRepo.findByMob(mob);
+        logger.info("Student get from repo is "+byId.get());
+        logger.debug("Student get from repo is "+byId.get());
+        logger.warn("Student get from repo is "+byId.get());
+        logger.error("Student get from repo is "+byId.get());
         if(byId.isPresent()){
             return byId.get();
         }else{
