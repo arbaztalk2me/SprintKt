@@ -10,12 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Profile;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @SpringBootApplication
+@Profile("application-prod")
 @OpenAPIDefinition(info = @Info(title = "Student Rest Api",description = "Student Crud Application",version = "V 2.0",
 		contact = @Contact(url = "http://gigantic-server.com", name = "Himanshu bro", email = "email2himasnhu.com")))
 public class HimashuCrudApplication {

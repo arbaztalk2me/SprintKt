@@ -48,6 +48,10 @@ Controller Class===>
 		@Operation(summary = "get course By Id",description = "get course by id from db") on method also same annotation
 
 
+MODEL CLASS=====>
+		@Schema(description = "Student Model Information") on top of class
+		@Schema(description = "Student Name Column",example = "himanshu") on method
+
 
 
 //LOGGER ---- LEVEL
@@ -59,7 +63,8 @@ By default
 info
 
 
-MODEL CLASS=====>
-		@Schema(description = "Student Model Information") on top of class
-		@Schema(description = "Student Name Column",example = "himanshu") on method
 
+//Spring Profiles==== For diff env we use diff configuration this is called profiling
+prod ====aplication-prod.properties
+dev ====aplication-dev.properties
+test ====aplication-test.properties
